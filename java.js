@@ -29,7 +29,7 @@ if (anyad === 3)
         let eredmeny = text.toLowerCase();
         alert(eredmeny);
         window.open("https://www.youtube.com/watch?v=RF9s6HexTV0");
-
+        document.getElementById("InputField").disabled =true;
     }
 });
 
