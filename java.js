@@ -23,7 +23,7 @@ midgomb.addEventListener('click', function () {
             break;
         case 4: 
             baltext.style.display = "block";
-            szamlalo = szamlalo -4;
+            szamlalo = 0;
             break;
     }
 });
