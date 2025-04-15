@@ -8,21 +8,22 @@ let szamlalo = 0;
 midgomb.addEventListener('click', function () {
     szamlalo++;
 
-    // Use modulo to cycle through 1–4
-    let action = szamlalo % 4;
-
-    switch (action) {
+    switch (szamlalo) {
         case 1:
             jobbtext.style.display = "none";
+
             break;
+            
         case 2:
             baltext.style.display = "none";
             break;
         case 3:
             jobbtext.style.display = "block";
+
             break;
-        case 0: // 4th press (szamlalo % 4 === 0)
+        case 4: 
             baltext.style.display = "block";
+            szamlalo = szamlalo -4;
             break;
     }
 });
