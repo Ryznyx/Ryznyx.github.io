@@ -1,0 +1,16 @@
+.withdraw{
+    float:right;
+
+}
+.loginform{
+    float:left;
+}
+.userdata{
+        position: absolute;
+        top:5%;
+        left: 50%;
+        transform: translate(-80%, -10%);   
+}
+body{
+    background-color:rgb(207, 166, 78);
+}

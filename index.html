@@ -3,42 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="design.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Narancs Bank</title>
 </head>
 <body>
-    <div id="middiv">
-        <button id="mid">Nagy Piros Gomb</button>
-       </div>
-    <div id="jobb">
-        Domine Deus omnipotens, Rex regum, exaudi clamorem nostrum contra potestates tenebrarum.
-        Invocamus nomen tuum sanctissimum: Iesu Christe, Fili Dei vivi, veni in auxilium populo tuo.
-        Effunde lumen tuum super hunc locum, et dissolve vincula quae tenebris nos ligaverunt.
-        Spiritus immundi, non amplius habetis ius hic manendi.
-        Per virtutem crucis, per sanguinem Agni immaculati, recedite.
-        Detestabilis Satana, deceptorem hominum, iam non es princeps hic.
-        Terra et caelum clament contra te: Fiat voluntas Dei, non tua!
-        Custodes celestes, descendite et pugnáte pro anima hac.
-        Cor Iesu, fons misericordiae, esto murus inexpugnabilis.
-        Fiat lux! Et lux vincat tenebras.
-        Haec est domus Dei, et nullus daemon ingrediatur eam.
-        In nomine Iesu, et per fidem Ecclesiae, exorcizamus vos.
-        Amen.
-       </div>
-   <div id="bal">
-    Exorcizo te, spiritus immunde, omnis incursio adversarii, omnis phantasma, omnis legio diabolica, in nomine Iesu Christi Nazaraeni.
-    Praecipio tibi ut discedas ab hoc servo Dei, quem Deus omnipotens suo pretioso sanguine redemit.
-    Non habeas potestatem super corpus eius, nec super animam eius, nec super mentem eius.
-    Recede in tenebras unde venisti, princeps mendacii, serpens antiquus.
-    Iam percussus es in cruce, iam victus in resurrectione Domini nostri Iesu Christi.
-    In nomine Patris, et Filii, et Spiritus Sancti, te compello.
-    Recede, maledicte, in abyssum inferni.
-    Audi verbum Domini: Non habebis hic locum nec potestatem.
-    Signum crucis te confundat, et lumen Christi te exurat.
-    Angeli Domini circumdent hunc famulum Dei, et protegat eum gratia divina.
-    Amen.
-   </div>
-
-   <script src="java.js"></script>
+    <div class="loginform">
+    <label id="userid">Felhasználónév</label>
+    <p></p>
+    <input type="text" id="userid">
+    <p></p>
+    <label id="password">Jelszó</label>
+    <p></p>
+    <input type="number" id="pin">
+    <p></p>
+    <button type="submit">Login</button>
+</div>
+<div class="withdraw">
+    <label>Pénzfelvétel összege</label>
+    <p></p>
+    <input type="number" id="withdrawvalue">
+    <p></p>
+    <button id="withdraw">Withdraw money</button>
+</div>
+<div class="userdata">
+    <label id="username">0</label>
+    <label id="balance">0</label>
+</div>
+ <script src="java.js"></script>   
 </body>
 </html>
