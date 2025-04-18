@@ -18,6 +18,7 @@ let user2 = {
 }
 
 users.push(user1);
+users.push(user2);
 let logedInUser= null;
 
 function login() 
