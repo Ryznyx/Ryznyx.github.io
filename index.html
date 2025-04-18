@@ -10,24 +10,24 @@
     <div class="loginform">
     <label id="userid">Felhasználónév</label>
     <p></p>
-    <input type="text" id="userid">
+    <input type="text" id="userid-input">
     <p></p>
     <label id="password">Jelszó</label>
     <p></p>
     <input type="number" id="pin">
     <p></p>
-    <button type="submit">Login</button>
+    <button onclick="login()">Login</button>
 </div>
 <div class="withdraw">
     <label>Pénzfelvétel összege</label>
     <p></p>
     <input type="number" id="withdrawvalue">
     <p></p>
-    <button id="withdraw">Withdraw money</button>
+    <button onclick="withdraw()" id="withdraw">Withdraw money</button>
 </div>
 <div class="userdata">
-    <label id="username">0</label>
-    <label id="balance">0</label>
+    <label id="username"></label>
+    <label id="balance"></label>
 </div>
  <script src="java.js"></script>   
 </body>
