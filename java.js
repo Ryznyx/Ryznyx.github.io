@@ -8,6 +8,14 @@ let user1 = {
     accountstatus: 1,
     failedlogin:0,
 }
+let user2 = {
+    fullname: "Official Egér",
+    userID: "kungfustasarkanyvagyokhiddelpls",
+    PIN: "0123",
+    balance: 1544,
+    accountstatus: 1,
+    failedlogin:0,
+}
 
 users.push(user1);
 let logedInUser= null;
