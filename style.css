@@ -14,3 +14,12 @@
 body{
     background-color:rgb(207, 166, 78);
 }
+#LogoutButton{
+   position: absolute;
+   top: 30%;
+   left: 40%;
+   font-size: 15px;
+   background-color:rgb(11, 233, 196);
+   font-style:initial;
+   display:none;
+}

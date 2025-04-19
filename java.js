@@ -20,6 +20,8 @@ let user2 = {
 users.push(user1);
 users.push(user2);
 let logedInUser= null;
+let loginUI = document.getElementById('logingroup');
+let logout = document.getElementById('LogoutButton');
 
 function login() 
 {
@@ -32,6 +34,7 @@ if (user !==  null){
     logedInUser.failedlogin = 0;
     alert("Sikeres bejelentkezés!");
     updateUserdata();
+    loggedInUIUpdate();
 }
 else{
     alert("sikertelenlogin");  
@@ -88,9 +91,29 @@ function withdraw()
         alert(`Sikeresen felvettél ${withdrawamount} Ft-ot.`);
     }
 }
+function loggedInUIUpdate()
+{
+loginUI.style.display = "none";
+logout.style.display = "block";
+}
 
 
+function loggingout()
+{
+    logedInUser = null;  //tried using updateUserdata() but for some reason it does not remove the values , with null it should be empty 
+    loginUI.style.display = "block";
+    logout.style.display = "none";
+    clearuserdata();
+}
 
+function clearuserdata()
+{
+    document.getElementById('username').innerText = "";
+    document.getElementById('balance').innerText = "";
+    document.getElementById('userid-input').value = "";
+    document.getElementById('pin').value = "";
+    document.getElementById('withdrawvalue').value = "";
+}
 
 
 
@@ -114,4 +137,13 @@ A képernyő középső oldalán kapjanak helyet a bejelentkezett felhasználóv
 A képernyő jobb oldalán az withdraw felület lesz:
 - egy input field ami csak számokat fogad el
 - egy gomb ami a pénz "kivételére" szolgál
+
+Valósítsunk meg logout funkcionalitást.
+
+- Ehhez első lépésben a sikeres belépés után tüntessük el a login felületet (input mezők, labeke, gombok) eltüntetése
+- Sikeres belépés után miután eltüntek a login felület mezői, jelenjen meg egy gomb valahol ami "Logout" névre hallgat. 
+- A logout gombot megnyomva visszajön a login felület illetve azok a mezők amik a teljes nevet és a balance-ot jelzik ismét üres stringgé változnak
+
+vigyázz: logout után a rendszerben sem tárolódhat sehol a bejelentkezett felhasználó, így pénzfelvétel sem lehetséges ilyenkor
+
 */
