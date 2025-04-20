@@ -123,6 +123,7 @@ function loggingout()
     loginUI.style.display = "block";
     logout.style.display = "none";
     clearuserdata();
+    removeAdminUI();
 }
 
 function clearuserdata()
@@ -157,6 +158,12 @@ function statistics()
     let avg = sumwithdraw / mennyiseg;
     console.log(`${avg} Ft az átlagos pénzfelvétel a mai napon.`)
     
+}
+
+function removeAdminUI()
+{
+    logbutton.style.display = "none";
+    stat.style.display = "none";
 }
 
 
