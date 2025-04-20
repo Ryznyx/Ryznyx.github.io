@@ -7,14 +7,16 @@ let user1 = {
     balance: 100000000,
     accountstatus: 1,
     failedlogin:0,
+    accountlevel:1,
 }
 let user2 = {
     fullname: "Official Egér",
     userID: "kungfustasarkanyvagyokhiddelpls",
     PIN: "0123",
-    balance: 1544,
+    balance: 50000,
     accountstatus: 1,
     failedlogin:0,
+    accountlevel:2,
 }
 
 users.push(user1);
@@ -23,7 +25,11 @@ let logedInUser= null;
 let FailedUser= null;
 let loginUI = document.getElementById('logingroup');
 let logout = document.getElementById('LogoutButton');
+let logbutton = document.getElementById('backlogbutton');
+let stat = document.getElementById('statbutton');
 let backlog = [];
+let withdrawstat = [];
+let sumwithdraw = 0;
 
 function login() 
 {
@@ -38,6 +44,10 @@ if (user !==  null){
     backlog.push(`${getCurrentDate()} ${logedInUser.userID} sikeresen bejelentkezett`);
     updateUserdata();
     loggedInUIUpdate();
+    if (logedInUser.accountlevel > 1)
+    {
+        EnableAdminUI();
+    }
 }
 else{
     alert("sikertelenlogin");  
@@ -95,6 +105,9 @@ function withdraw()
         document.getElementById('balance').innerText = logedInUser.balance;
         alert(`Sikeresen felvettél ${withdrawamount} Ft-ot.`);
         backlog.push(`${getCurrentDate()} ${logedInUser.userID} a számlájáról levett ${withdrawamount} összeget, az új egyenlege: ${logedInUser.balance}`);
+        withdrawstat.push(`${logedInUser.userID} felvett ${withdrawamount} forintot.`);
+        sumwithdraw += Number(withdrawamount);
+        console.log(sumwithdraw);
     }
 }
 function loggedInUIUpdate()
@@ -132,7 +145,19 @@ function showlog()
     console.log(backlog)
 }
 
+function EnableAdminUI()
+{
+    logbutton.style.display = "block";
+    stat.style.display = "block";
+}
 
+function statistics()
+{
+    let mennyiseg = withdrawstat.length;
+    let avg = sumwithdraw / mennyiseg;
+    console.log(`${avg} Ft az átlagos pénzfelvétel a mai napon.`)
+    
+}
 
 
 
@@ -177,5 +202,26 @@ A következőket naplózzuk:
 A gomb nyomás hatására a naplófájlt (a tömböt) a console-ra iratjuk ki az alábbi paranccsal:
 
 console.log(tömbnév)
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Készítsünk több-szintű felhasználó kezelést és statisztikai modult.
+
+A rendszerben innentől két típusú felhasználó lehet:
+- normál, mezei user
+- admin
+
+A normál user számára a log gomb nem látszódik, csak az admin számára.
+
+Az admin továbbá bejelentkezés után lát egy gombot aminek a neve "Statistics". Erre rákattintva a console-ra kiíródik 
+egy üzenet, ami a rendszerben egészen mostanáig történt összes pénzfelvételt átlagolja.
+
+Példa:
+X felvett 7500 forintot
+Y felvett 7500 forintot
+Z felvett 15000 forintot
+
+A gombot megnyomva:
+
+Átlagos pénzfelvétel összege a mai napon: 10 000 Ft
 
 */
