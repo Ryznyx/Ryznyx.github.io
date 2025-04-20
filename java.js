@@ -20,6 +20,7 @@ let user2 = {
 users.push(user1);
 users.push(user2);
 let logedInUser= null;
+let FailedUser= null;
 let loginUI = document.getElementById('logingroup');
 let logout = document.getElementById('LogoutButton');
 let backlog = [];
@@ -40,8 +41,8 @@ if (user !==  null){
 }
 else{
     alert("sikertelenlogin");  
-    backlog.push(`${getCurrentDate()}  sikertelen bejelentkezés`);
-
+    backlog.push(`${getCurrentDate()} ${FailedUser.userID} sikertelen bejelentkezés`);
+    FailedUser = null;
 }
 }
 
@@ -53,7 +54,7 @@ function getUser(beirtID, beirtpin)
         if (user.userID === beirtID && user.PIN === beirtpin && user.accountstatus === 1)
             return user;
         else if (user.userID === beirtID && user.PIN != beirtpin && user.accountstatus === 1) 
-        {
+        {   FailedUser = user;
             user.failedlogin++;
             if (user.failedlogin >=3){
                 user.accountstatus = 0;
