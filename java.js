@@ -22,6 +22,7 @@ users.push(user2);
 let logedInUser= null;
 let loginUI = document.getElementById('logingroup');
 let logout = document.getElementById('LogoutButton');
+let backlog = [];
 
 function login() 
 {
@@ -33,11 +34,14 @@ if (user !==  null){
     logedInUser = user;
     logedInUser.failedlogin = 0;
     alert("Sikeres bejelentkezés!");
+    backlog.push(`${getCurrentDate()} ${logedInUser.userID} sikeresen bejelentkezett`);
     updateUserdata();
     loggedInUIUpdate();
 }
 else{
     alert("sikertelenlogin");  
+    backlog.push(`${getCurrentDate()}  sikertelen bejelentkezés`);
+
 }
 }
 
@@ -50,7 +54,7 @@ function getUser(beirtID, beirtpin)
             return user;
         else if (user.userID === beirtID && user.PIN != beirtpin && user.accountstatus === 1) 
         {
-            user.failedlogin++; 
+            user.failedlogin++;
             if (user.failedlogin >=3){
                 user.accountstatus = 0;
             }   
@@ -89,6 +93,7 @@ function withdraw()
         logedInUser.balance -= withdrawamount;
         document.getElementById('balance').innerText = logedInUser.balance;
         alert(`Sikeresen felvettél ${withdrawamount} Ft-ot.`);
+        backlog.push(`${getCurrentDate()} ${logedInUser.userID} a számlájáról levett ${withdrawamount} összeget, az új egyenlege: ${logedInUser.balance}`);
     }
 }
 function loggedInUIUpdate()
@@ -115,8 +120,15 @@ function clearuserdata()
     document.getElementById('withdrawvalue').value = "";
 }
 
+function getCurrentDate()
+{
+    let time = new Date();
+}
 
-
+function showlog()
+{
+    console.log(backlog)
+}
 
 
 
@@ -145,5 +157,23 @@ Valósítsunk meg logout funkcionalitást.
 - A logout gombot megnyomva visszajön a login felület illetve azok a mezők amik a teljes nevet és a balance-ot jelzik ismét üres stringgé változnak
 
 vigyázz: logout után a rendszerben sem tárolódhat sehol a bejelentkezett felhasználó, így pénzfelvétel sem lehetséges ilyenkor
+
+
+
+Készítsünk egy naplózási / logmechanizmust.
+
+A feladat, hogy a fontosabb eseményeket naplózzuk és gombkattintásra kilistázzuk őket. 
+
+Egy naplóbejegyzés tartalma egy string, egy szöveg ami tartalmazza hogy mi történt.
+
+A következőket naplózzuk:
+
+- "Sikertelen bejelentkezés"
+- "{username} user sikeresen bejelentkezett"
+- "{username} a számlájáról {összeg} összeget levett, a maradék összeg: {maradékösszeg}"
+
+A gomb nyomás hatására a naplófájlt (a tömböt) a console-ra iratjuk ki az alábbi paranccsal:
+
+console.log(tömbnév)
 
 */
