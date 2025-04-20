@@ -120,10 +120,11 @@ function clearuserdata()
     document.getElementById('withdrawvalue').value = "";
 }
 
-function getCurrentDate()
-{
+function getCurrentDate() {
     let time = new Date();
+    return time;
 }
+
 
 function showlog()
 {
