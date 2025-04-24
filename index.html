@@ -3,40 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Narancs Bank</title>
+    <title>Document</title>
 </head>
 <body>
-    <div class="loginform" id="logingroup">
-    <label id="userid">Felhasználónév</label>
-    <p></p>
-    <input type="text" id="userid-input">
-    <p></p>
-    <label id="password">Jelszó</label>
-    <p></p>
-    <input type="number" id="pin">
-    <p></p>
-    <button onclick="login()">Login</button>
-</div>
-<div class="withdraw">
-    <label>Pénzfelvétel összege</label>
-    <p></p>
-    <input type="number" id="withdrawvalue">
-    <p></p>
-    <button onclick="withdraw()" id="withdraw">Withdraw money</button>
-</div>
-<div class="userdata">
-    <label id="username"></label>
-    <label id="balance"></label>
-</div>
-<div>
-    <button onclick="loggingout()" id="LogoutButton">Logout</button>
-</div>
-<div>
-    <button onclick="showlog()" id="backlogbutton">backlog</button>
-    <p></p>
-    <button onclick="statistics()" id="statbutton">Statistics</button>
-</div>
- <script src="java.js"></script>   
+    <input id="inputdata">
+    <button onclick="addnote()">Add Note</button>
+    <div id="container"></div>
+
+    <script src="java.js"></script>
 </body>
 </html>
