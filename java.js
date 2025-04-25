@@ -3,7 +3,7 @@ function addnote() {
     let childElement = document.createElement('div');
     childElement.innerHTML = input;
     let containerDiv = document.getElementById("container"); 
-    containerDiv.appendChild(childElement);
+    containerDiv.prepend(childElement);
     document.getElementById("inputdata").value = "";
 }
 
