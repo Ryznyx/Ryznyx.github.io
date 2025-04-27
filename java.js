@@ -2,6 +2,16 @@ function addnote() {
     let input = document.getElementById("inputdata").value; 
     let childElement = document.createElement('div');
     childElement.innerHTML = input;
+    childElement.addEventListener('click',function(){
+        childElement.remove();
+    });
+    childElement.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+        let newText = prompt("Edit your note:", childElement.innerHTML); 
+        if (newText !== null) {
+            childElement.innerHTML = newText; 
+        }
+    });
     let containerDiv = document.getElementById("container"); 
     containerDiv.prepend(childElement);
     document.getElementById("inputdata").value = "";
