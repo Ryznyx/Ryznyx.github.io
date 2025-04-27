@@ -2,8 +2,10 @@ function addnote() {
     let input = document.getElementById("inputdata").value; 
     let childElement = document.createElement('div');
     childElement.innerHTML = input;
-    childElement.addEventListener('click',function(){
-        childElement.remove();
+    childElement.addEventListener('click', function() {
+        if (confirm("Are you sure you want to delete this note?")) {
+            childElement.remove();
+        }
     });
     childElement.addEventListener('contextmenu', function(event) {
         event.preventDefault();
