@@ -51,21 +51,70 @@ button:hover {
     width: 300px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 1rem;
     box-shadow: 0 0 12px #0ff;
     overflow-y: auto;
-    max-height: 300px;
+    max-height: 400px;
 }
 
 /* Individual Note */
 #container div {
-    background: rgba(0, 255, 255, 0.1);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(158, 17, 116, 0.07);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 5px;      /* Smaller padding */
+    margin-bottom: 0.8rem;
     color: #0ff;
-    font-weight: 500;
-    box-shadow: 0 0 6px #0ff;
+    font-weight: 200;
+    font-size: 1rem;           /* Slightly smaller font */
+    box-shadow: 0 0 2px #0ff;
+}
+
+
+#container div span {
+    flex: 1;
+    margin-right: 6px;
+    word-break: break-word;
+    font-size: 0.9rem;            /* Match the note size */
+}
+
+#container div button {
+    background: transparent;
+    border: none;
+    color: #0ff;
+    font-size: 0.9rem;            /* Smaller icons */
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top:10%;
+    transition: color 0.2s, transform 0.2s;
+    padding: 1px;                 /* Prevent visual bulk */
+}
+
+#container div button:hover {
+    color: #00faff;
+    transform: scale(1.1);        /* Slightly subtler scaling */
+}
+
+/* Custom Scrollbar for WebKit browsers */
+#container::-webkit-scrollbar {
+    width: 8px; /* thickness of scrollbar */
+}
+
+#container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); /* background of the track */
+    border-radius: 5px;
+}
+
+#container::-webkit-scrollbar-thumb {
+    background: #0ff; /* scrollbar handle color */
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgb(57, 255, 8);
+}
+
+#container::-webkit-scrollbar-thumb:hover {
+    background: #00faff;
 }

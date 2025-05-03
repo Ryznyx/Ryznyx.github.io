@@ -1,23 +1,38 @@
 function addnote() {
-    let input = document.getElementById("inputdata").value; 
-    let childElement = document.createElement('div');
-    childElement.innerHTML = input;
-    childElement.addEventListener('click', function() {
+    let input = document.getElementById("inputdata").value; //átvesszük a beírt inputot
+    if (!input.trim()) return;
+
+    let childElement = document.createElement('div');   //krealunk egy ures divet (childElement)
+
+    let textSpan = document.createElement('span');   //krealunk egy span-t (textSpan)
+    textSpan.textContent = input;   //az üres span ami a divnek egy elementje lesz megkapja az input szövegét
+
+    let editButton = document.createElement('button');   //krealunk 1 buttont
+    editButton.textContent = "✏️";    //a button contentje egy ceruza lesz szöveg helyett (probably)
+    editButton.onclick = function () {  //társitunk a gombhoz egy funkciot ami onclicknél történik
+        let newText = prompt("Edit your note:", textSpan.textContent);   //krealunk egy promptot amibe a textSpan text contentjét lehet editelni
+        if (newText !== null) {                                          //abba került az inputdata   
+            textSpan.textContent = newText;       // ha az edit nem üres akkor az uj contentje a newText lesz ami promptba meglettadva
+        }
+    };
+
+    let deleteButton = document.createElement('button');  // UA mint az editbuttonnál, csak nem kell uj data, confirm ablak van
+    deleteButton.textContent = "🗑️";
+    deleteButton.onclick = function () {
         if (confirm("Are you sure you want to delete this note?")) {
-            childElement.remove();
+            childElement.remove();  //törli a mezőt
         }
-    });
-    childElement.addEventListener('contextmenu', function(event) {
-        event.preventDefault();
-        let newText = prompt("Edit your note:", childElement.innerHTML); 
-        if (newText !== null) {
-            childElement.innerHTML = newText; 
-        }
-    });
-    let containerDiv = document.getElementById("container"); 
-    containerDiv.prepend(childElement);
+    };
+
+    childElement.appendChild(textSpan);   //belekerül a divbe egy sorként
+    childElement.appendChild(editButton); //belekerül a divbe egy sorként
+    childElement.appendChild(deleteButton); //belekerül a divbe egy sorként
+
+    let containerDiv = document.getElementById("container");  //containerDiv átveszi a htmlbe megadott container divet
+    containerDiv.prepend(childElement);   //bekerul vizualisan a tablaba
     document.getElementById("inputdata").value = "";
 }
+
 
 
 
