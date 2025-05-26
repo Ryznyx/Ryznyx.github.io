@@ -40,6 +40,7 @@ for (let index = 0; index < todo.length; index++) {
 
  donebutton.onclick = function(){
     newDiv.classList.add("opacityhalf");
+    newDiv.removeChild(donebutton);
  }
  
  

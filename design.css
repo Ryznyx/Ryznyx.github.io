@@ -22,7 +22,7 @@ body{
     background-color:rgb(194, 245, 54);
     margin-bottom:1.5rem;
     border-radius: 5%;
-    margin-right:80%;
+    width:400px;
     box-shadow:2px 2px 2px 2px rgb(63, 2, 7);
     
 }
@@ -59,6 +59,7 @@ h3{
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-color: bisque;
     box-shadow: 0rem;
+    
     
 }
 
