@@ -1,0 +1,70 @@
+body{
+    background-color: gray;
+}
+.opacityhalf{
+    opacity:0.1;
+    transition:0.5s;
+}
+.opacityfull{
+    opacity:1;
+}
+.mainbody{
+    display:flex;
+    flex-direction: column;
+    background-color:gray;
+    
+}
+
+.cardstyle
+{
+    display:flex;
+    flex-direction: column;
+    background-color:rgb(194, 245, 54);
+    margin-bottom:1.5rem;
+    border-radius: 5%;
+    margin-right:80%;
+    box-shadow:2px 2px 2px 2px rgb(63, 2, 7);
+    
+}
+
+h5{
+    font-size: 15px;
+    margin-left:0.5rem;
+    margin-top:0.3rem;
+}
+h4{
+    font-size: 14px;
+    margin-left:0.5rem;
+}
+h3{
+    font-size: 13px;
+    margin-left:0.5rem;
+}
+
+#cardstyle:hover{
+    background-color:rgb(6, 204, 95);
+    transition: 0.5s;
+}
+.buttondesign{
+    display:flex;
+    flex-direction: column;
+    background-color:bisque; 
+    
+    border-radius: 30%;
+    margin-left:30%;
+    margin-right:30%;
+    margin-bottom:1%;
+    padding:0.4rem;
+    font-size:10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-color: bisque;
+    box-shadow: 0rem;
+    
+}
+
+.buttondesign:hover{
+    background-color:rgb(10, 212, 128);  
+    transition:0.2s;
+    box-shadow: 1rem;
+    border-color: aqua;
+}
