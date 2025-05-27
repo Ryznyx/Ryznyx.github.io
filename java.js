@@ -1,5 +1,5 @@
 function mngmembers() {
-let  managevalue = document.getElementById("detailsdata")
+let  managevalue = document.getElementById("detailsdata");
 managevalue.innerHTML = "Alkalmazottak menedzselése HAMAROSAN";
 setTimeout(() => {
     managevalue.innerHTML = "";
@@ -7,7 +7,7 @@ setTimeout(() => {
 }
 
 function addmbrs(){
-    let dtlsvalue= document.getElementById("detailsdata")
+let dtlsvalue= document.getElementById("detailsdata");
 dtlsvalue.innerHTML = "Új alkalmazott felvétele HAMAROSAN";
 setTimeout(() => {
     dtlsvalue.innerHTML = "";
