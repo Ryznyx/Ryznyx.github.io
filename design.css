@@ -49,3 +49,47 @@ margin-top:0.2rem;
 #detailsdata{
     margin-top: 0.5rem;
 }
+
+.managemembersfield{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color:rgb(238, 192, 192);
+    box-shadow:3px snow;
+    width:50%;
+    height:22rem;
+    border-radius:10%;
+    box-shadow:2px 2px 2px 2px rgb(148, 144, 89);
+    
+    
+}
+
+.hideinfo{
+    opacity:0;
+}
+.showinfo{
+    opacity:1;
+}
+
+.buttondesign{
+    display:flex;
+    flex-direction: column;
+    text-align:center;
+    width:fit-content;
+    background-color:aquamarine;
+    padding:2px;
+    margin:auto;
+
+}
+
+.h1title{
+    display:flex;
+    justify-content: center;
+    border-radius: 10px;
+    border:2px solid bisque;
+    background-color: bisque;
+    margin:auto;
+    
+    
+}
