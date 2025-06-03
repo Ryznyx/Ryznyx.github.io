@@ -1,13 +1,78 @@
 let employeelist = [];
+employeelist.push({Név: "Kalányos Sztojka Iván", Cím: "lenaZucán", Személyiszám: "mija", Pozicio: "bokszoló", Fizetés: "3", Cigány: true});
+employeelist.push({Név: "Kolompár Orsós Sztojka Tamás", Cím: "Nyoccker", Személyiszám: "elvitték a desztók", Pozicio: "Ütőképes", Fizetés: "10", Cigány: true});
+
+let romamenuvalue = false;
+let hiddenfeature = document.getElementById("nameplateID"); 
+let count = 0;
+hiddenfeature.addEventListener("click", (event)=> {
+count++;
+if (count === 17){
+romamenuvalue = true;
+count = 0;
+alert("yoo cigany");
+}
+});
+
 
 function mngmembers() {
 
-let dtlsvalue= document.getElementById("detailsdata");
+ 
+
+let dtlsvalue = document.getElementById("detailsdata");
 dtlsvalue.classList.remove("managemembersfield");
-dtlsvalue.innerHTML = "Alkalmazottak menedzselése HAMAROSAN";
-setTimeout(() => {
-    dtlsvalue.innerHTML = "";
-}, 1500);
+
+for (let index = 0; index < employeelist.length; index++) {
+    let element = employeelist[index];
+    
+    let newdiv = document.createElement("div");
+
+    let namedata = document.createElement("h5");
+    namedata.innerHTML = "Név: "+ element.Név;
+    newdiv.appendChild(namedata);
+
+    let namedata2 = document.createElement("h5");
+    namedata2.innerHTML = "Lakcím: "+ element.Cím;
+    newdiv.appendChild(namedata2);
+
+    let namedata3 = document.createElement("h5");
+    namedata3.innerHTML = "Személyi szám: "+ element.Személyiszám;
+    newdiv.appendChild(namedata3);
+
+    let namedata4 = document.createElement("h5");
+    namedata4.innerHTML = "Pozíció: "+element.Pozicio;
+    newdiv.appendChild(namedata4);
+
+    let namedata5 = document.createElement("h5");
+    namedata5.innerHTML = "Fizetés: "+ element.Fizetés;
+    newdiv.appendChild(namedata5);
+
+    let namedata6 = document.createElement("h5");
+    namedata6.innerHTML = "Subhuman status: " +element.Cigány;
+    newdiv.appendChild(namedata6);
+
+    let deletebutton = document.createElement("button");
+    deletebutton.innerText = "Delete";
+    newdiv.appendChild(deletebutton);
+
+    deletebutton.onclick = function() {
+        console.log(element);
+        employeelist.pop(element); // wip not working properly ||
+        dtlsvalue.removeChild(newdiv);
+        
+    }
+
+    newdiv.classList.add("employeecard");
+    if (element.cigany = true && romamenuvalue === true)
+    {
+        newdiv.classList.add("shitskin"); 
+    }
+    dtlsvalue.appendChild(newdiv);
+    
+}
+
+
+
 
 }
 
@@ -98,13 +163,15 @@ romavalue.classList.add("hideinfo");
 managevalue.classList.add("managemembersfield");
 addata.classList.add("buttondesign");
 fielddesc.classList.add("h1title");
-let nameplatefunction = document.getElementById("nameplateID");
+let nameplatefunction = document.getElementById("nameplateID"); //kikene szervezni innen
 let count = 0;
 nameplatefunction.addEventListener("click", (event)=> {
 count++;
 if (count === 17){
 mainquestion.classList.add("showinfo");
 romavalue.classList.add("showinfo");
+alert("yoo cgiany");
+romamenuvalue = true;
 count = 0;
 }
 });
@@ -112,21 +179,3 @@ count = 0;
 }
 
 
-/*
-function addtoemployee(){
-    let employeename = document.getElementById(input.value);
-    let employeeaddress = document.getElementById(input2.value);
-    let szemelyiszamval = document.getElementById(input3.value);
-    let employeepos = document.getElementById(input4.value);
-    let employeesal = document.getElementById(input5.value);
-    let cigany = document.getElementById(romavalue.value);
-
-    employeelist.push({Név: employeename, Cím: employeeaddress, Személyiszám: szemelyiszamval, Pozicio: employeepos, Fizetés: employeesal, Cigány: cigany});
-    console.log(employeelist);
-}
-    */
-
-
-/*
-
-*/
