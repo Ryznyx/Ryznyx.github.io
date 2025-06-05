@@ -9,8 +9,7 @@ hiddenfeature.addEventListener("click", (event)=> {
 count++;
 if (count === 17){
 romamenuvalue = true;
-count = 0;
-alert("yoo cigany");
+alert("yoo cigany shavale romale minden tesokamnak ZARGASDMEG");
 }
 });
 
@@ -21,6 +20,7 @@ function mngmembers() {
 
 let dtlsvalue = document.getElementById("detailsdata");
 dtlsvalue.classList.remove("managemembersfield");
+dtlsvalue.innerHTML = "";
 
 for (let index = 0; index < employeelist.length; index++) {
     let element = employeelist[index];
@@ -77,7 +77,8 @@ for (let index = 0; index < employeelist.length; index++) {
 }
 
 function addmbrs(){
-    let  managevalue = document.getElementById("detailsdata");
+let  managevalue = document.getElementById("detailsdata");
+managevalue.innerHTML = "";
 
 //inputlayout
 let fielddesc = document.createElement("h1");
@@ -110,6 +111,11 @@ romavalue.type="checkbox";
 
 let addata = document.createElement("button");
 addata.innerText = "Hozzáadás a dolgozói listához";
+if (romamenuvalue === true)
+{
+mainquestion.classList.add("showinfo");
+romavalue.classList.add("showinfo");
+};
 addata.onclick = function(){
     addtoemployee();
     emptyinputdata();
@@ -118,6 +124,7 @@ addata.onclick = function(){
     }, 600);
     
 };
+
 
 function addtoemployee(){
     
@@ -163,18 +170,6 @@ romavalue.classList.add("hideinfo");
 managevalue.classList.add("managemembersfield");
 addata.classList.add("buttondesign");
 fielddesc.classList.add("h1title");
-let nameplatefunction = document.getElementById("nameplateID"); //kikene szervezni innen
-count = 0;
-nameplatefunction.addEventListener("click", (event)=> {
-count++;
-if (count === 17){
-mainquestion.classList.add("showinfo");
-romavalue.classList.add("showinfo");
-alert("yoo cgiany");
-romamenuvalue = true;
-count = 0;
-};
-});
 
 };
 
