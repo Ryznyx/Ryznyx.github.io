@@ -41,6 +41,13 @@ if (month3 >= 1 )
 
 };
 
+const audio = new Audio('sound/gauntlet.mp3');
+audio.loop = true;
+window.addEventListener('click', () => {
+  audio.play().catch(error => {
+    console.log("Playback failed:", error);
+  });
+});
 
 
 
