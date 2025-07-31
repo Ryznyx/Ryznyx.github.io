@@ -26,7 +26,7 @@
 
 .button{
 
-    background: red;
+    background: rgb(240, 209, 36);
     height:50px;
     
 }
@@ -46,7 +46,7 @@
     height:200px;
 }
 #resultbutton{
-    background-color: greenyellow;
+    background-color: rgb(240, 168, 34);
     width: 50%;
     margin-left:25%;
 }
@@ -56,9 +56,9 @@
     transition:0.5s;
 }
 
-#buttonCorrect{
+.buttonCorrect{
     background-color: green;
 }
-#buttonIncorrect{
+.buttonIncorrect{
     background-color:red;
 }
