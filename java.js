@@ -4,10 +4,6 @@ let playernumbers = [];
 let pressed = 0;
 
 
-
-    
-
-
 let resultbutton = document.getElementById('resultbutton');
 let btnone = document.getElementById('btnone');
 let btntwo = document.getElementById('btntwo');
@@ -32,13 +28,12 @@ playernumbers.push(press);
     else{
         btnone.classList.add('buttonIncorrect');
         
-        playernumbers = [];
         ClearDesign();
     }
 pressed++;   
 };
 
-function pressbuttonTwo(){   // be se megy semmibe, csak az alert ugrik fel
+function pressbuttonTwo(){  
 
 let press = 2;
 playernumbers.push(press);
@@ -52,7 +47,7 @@ if (numbers[pressed] === press)
     {
         btntwo.classList.add('buttonIncorrect');
         
-        playernumbers = [];
+        
         ClearDesign();
         
     }
@@ -73,7 +68,7 @@ playernumbers.push(press);
     else{
         btnthree.classList.add('buttonIncorrect');
         
-        playernumbers = [];
+        
         ClearDesign();
     }
 pressed++;
@@ -90,10 +85,9 @@ playernumbers.push(press);
     else{
         btnfour.classList.add('buttonIncorrect');
         
-        playernumbers = [];
+        
         ClearDesign();
-    }
-console.log(playernumbers);    
+    }  
 pressed++;
 };
 function pressbuttonFive(){
@@ -109,7 +103,7 @@ playernumbers.push(press);
     else{
         btnfive.classList.add('buttonIncorrect');
         
-        playernumbers = [];
+        
         ClearDesign();
     }
 pressed++;
@@ -129,7 +123,7 @@ playernumbers.push(press);
     else{
         btnsix.classList.add('buttonIncorrect');
         
-        playernumbers = [];
+        
         ClearDesign();
        
     }
@@ -139,26 +133,24 @@ pressed++;
 
 
 function showresult(){
-    if (pressed === 5 || pressed > 5){
+    if ( pressed >= 5){
         for (let index = 0; index < playernumbers.length; index++) {
         if (numbers[index] != playernumbers[index])
             {
-            console.log("hibás sorrend");
-            resultbutton.classList.add('buttonIncorrect');
-            resultbutton.innerHTML = "Hibás Sorrend";
-            ClearDesign();
-            pressed++;
-            
-            
+            ClearDesign(); //debatable if even needed since we immediately reset after a mistake and if we reach this stage it is impossible to be incorrect
+
             }   
         else
             {
             console.log("jó a sorrend");
             resultbutton.classList.remove('button');
             resultbutton.classList.add('buttonCorrect');
-            resultbutton.innerHTML = "jó a sorrend Sorrend";
+            resultbutton.innerHTML = "jó a sorrend";   
             ClearDesign();
-            pressed++;
+             
+                
+            
+            
             
             }
         
@@ -184,7 +176,12 @@ function ClearDesign(){
 
      btnsix.classList.remove('buttonCorrect');
      btnsix.classList.remove('buttonIncorrect');
-     
+     playernumbers = [];
      pressed = -1;  
+     setTimeout(() => {
+        resultbutton.innerHTML = "Result waiting room";
+     }, 1500);
+     
+     
 
 };
