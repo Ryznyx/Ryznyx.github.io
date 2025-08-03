@@ -2,15 +2,46 @@ let numbers = [];
 numbers.push(2, 6, 5, 4, 3, 1);
 let playernumbers = [];
 let pressed = 0;
+let balance = 1000;
+let betvalue = 0;
+let activetry = 3;
+let winszorzo = [1.5,2,3]
+let nyeremenyszorzo = 2;
 
 
-let resultbutton = document.getElementById('resultbutton');
+let balanceview = document.getElementById('balanceview');
+let betinput = document.getElementById('betinput');
 let btnone = document.getElementById('btnone');
 let btntwo = document.getElementById('btntwo');
 let btnthree = document.getElementById('btnthree');
 let btnfour = document.getElementById('btnfour');
 let btnfive = document.getElementById('btnfive');
 let btnsix = document.getElementById('btnsix');
+
+balanceview.innerHTML = "Az egyenleged: "+ balance;
+
+
+disablebuttons();
+
+
+
+
+betinput.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    if(betinput.value <= balance)
+    { 
+    betvalue = betinput.value;
+    balance = balance - betvalue;
+    betinput.value = "";
+    balanceview.innerHTML = "Az egyenleged: "+ balance;
+    enablebuttons();
+    disableinput();
+    }
+    else{
+        alert("a megadott összeg nagyobb az egyenlegednél");
+    }   
+  }
+});
 
 
 function pressbuttonOne(){
@@ -29,6 +60,7 @@ playernumbers.push(press);
         btnone.classList.add('buttonIncorrect');
         
         ClearDesign();
+        losegame();
     }
 pressed++;   
 };
@@ -49,7 +81,7 @@ if (numbers[pressed] === press)
         
         
         ClearDesign();
-        
+        losegame();
     }
 
 pressed++;   
@@ -70,6 +102,7 @@ playernumbers.push(press);
         
         
         ClearDesign();
+        losegame();
     }
 pressed++;
 };
@@ -87,6 +120,7 @@ playernumbers.push(press);
         
         
         ClearDesign();
+        losegame();
     }  
 pressed++;
 };
@@ -105,6 +139,7 @@ playernumbers.push(press);
         
         
         ClearDesign();
+        losegame();
     }
 pressed++;
 };
@@ -125,6 +160,7 @@ playernumbers.push(press);
         
         
         ClearDesign();
+        losegame();
        
     }
     
@@ -142,16 +178,10 @@ function showresult(){
             }   
         else
             {
-            console.log("jó a sorrend");
-            resultbutton.classList.remove('button');
-            resultbutton.classList.add('buttonCorrect');
-            resultbutton.innerHTML = "jó a sorrend";   
             ClearDesign();
-             
-                
-            
-            
-            
+            wincalculator();
+            disablebuttons(); 
+            enableinput();          
             }
         
     }
@@ -178,10 +208,58 @@ function ClearDesign(){
      btnsix.classList.remove('buttonIncorrect');
      playernumbers = [];
      pressed = -1;  
-     setTimeout(() => {
-        resultbutton.innerHTML = "Result waiting room";
-     }, 1500);
-     
-     
 
 };
+
+
+
+function losegame(){
+ if (activetry > 1)
+ {
+    activetry--;
+    nyeremenyszorzo--;
+ }
+ else
+ {
+    betvalue = 0;
+    alert("you lost the game, give me money");
+    activetry = 3;
+    nyeremenyszorzo = 2;
+    disablebuttons();
+ }
+};
+
+function wincalculator(){
+//let calculation = betvalue * winszorzo[nyeremenyszorzo];
+//balance = balance + calculation;
+balance = balance + (betvalue*winszorzo[nyeremenyszorzo]);
+balanceview.innerHTML = "Az egyenleged: "+ balance;
+
+};
+
+
+function disablebuttons(){
+btnone.classList.add('disabled-button');
+btntwo.classList.add('disabled-button');
+btnthree.classList.add('disabled-button');
+btnfour.classList.add('disabled-button');
+btnfive.classList.add('disabled-button');
+btnsix.classList.add('disabled-button');
+}
+
+function enablebuttons(){
+btnone.classList.remove('disabled-button');
+btntwo.classList.remove('disabled-button');
+btnthree.classList.remove('disabled-button');
+btnfour.classList.remove('disabled-button');
+btnfive.classList.remove('disabled-button');
+btnsix.classList.remove('disabled-button');    
+}
+
+function disableinput(){
+betinput.classList.add('disabled-input');
+}
+
+function enableinput(){
+betinput.classList.remove('disabled-input');
+}

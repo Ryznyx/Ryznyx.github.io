@@ -62,3 +62,23 @@
 .buttonIncorrect{
     background-color:red;
 }
+
+#betinput{
+    background-color: rgb(86, 221, 138);
+    height:40px;
+}
+
+#balanceview{
+    color:red;
+    font-size:23px;
+}
+.disabled-button {
+  pointer-events: none; /* Disables click/hover events */
+  opacity: 0.5;         /* Makes it look disabled */
+  cursor: not-allowed;  /* Shows a disabled cursor */
+}
+.disabled-input {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
