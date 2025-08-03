@@ -226,6 +226,7 @@ function losegame(){
     activetry = 3;
     nyeremenyszorzo = 2;
     disablebuttons();
+    enableinput();
  }
 };
 
