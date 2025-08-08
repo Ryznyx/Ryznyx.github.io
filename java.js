@@ -1,5 +1,7 @@
 let numbers = [];
-numbers.push(2, 6, 5, 4, 3, 1);
+//let numbers2 = [];
+//numbers2.push(2, 6, 5, 4, 3, 1);
+
 let playernumbers = [];
 let pressed = 0;
 let balance = 1000;
@@ -7,6 +9,7 @@ let betvalue = 0;
 let activetry = 3;
 let winszorzo = [1.5,2,3]
 let nyeremenyszorzo = 2;
+let rounds = 1;
 
 
 let balanceview = document.getElementById('balanceview');
@@ -36,6 +39,8 @@ betinput.addEventListener('keydown', function(event) {
     balanceview.innerHTML = "Az egyenleged: "+ balance;
     enablebuttons();
     disableinput();
+    numbers = generateNewCombination();
+    console.log(numbers);
     }
     else{
         alert("a megadott összeg nagyobb az egyenlegednél");
@@ -181,7 +186,9 @@ function showresult(){
             ClearDesign();
             wincalculator();
             disablebuttons(); 
-            enableinput();          
+            enableinput();         
+            wingame(); 
+            endround();
             }
         
     }
@@ -227,6 +234,8 @@ function losegame(){
     nyeremenyszorzo = 2;
     disablebuttons();
     enableinput();
+    endround();
+    
  }
 };
 
@@ -263,4 +272,36 @@ betinput.classList.add('disabled-input');
 
 function enableinput(){
 betinput.classList.remove('disabled-input');
+}
+function wingame(){
+    nyeremenyszorzo=2;
+    activetry=3;
+}
+
+function generateNewCombination() {
+  const array = [1, 2, 3, 4, 5, 6];
+
+  // kétszer shuffle-zünk hogy kellően átrendezze, lehet h. egy is elég lenne, de így biztosabb
+  shuffleArray(array); 
+  shuffleArray(array);
+  return array;
+}
+
+function shuffleArray(array) {
+
+   for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // random választunk egy indexet, ez lesz j
+    [array[i], array[j]] = [array[j], array[i]]; // megcseréljük az i. és a j. indexen levő elemet
+  }
+
+}
+
+function endround(){
+    rounds++;
+    if (rounds >=5)
+    {
+        alert("5. kör vége a mókának shavale");
+        disableinput();
+        disablebuttons();
+    }
 }
