@@ -18,8 +18,7 @@ let btnone = document.getElementById('btnone');
 let btntwo = document.getElementById('btntwo');
 let btnthree = document.getElementById('btnthree');
 let btnfour = document.getElementById('btnfour');
-let btnfive = document.getElementById('btnfive');
-let btnsix = document.getElementById('btnsix');
+
 
 balanceview.innerHTML = "Az egyenleged: "+ balance;
 
@@ -129,52 +128,12 @@ playernumbers.push(press);
     }  
 pressed++;
 };
-function pressbuttonFive(){
 
-let press = 5;
-playernumbers.push(press);
 
-    if (numbers[pressed] === press)
-    {
-        btnfive.classList.add('buttonCorrect');
-        showresult();
-    }
-    else{
-        btnfive.classList.add('buttonIncorrect');
-        
-        
-        ClearDesign();
-        losegame();
-    }
-pressed++;
-};
-function pressbuttonSix(){
-
-let press = 6;
-playernumbers.push(press);
-
-    if (numbers[pressed] === press)
-    {
-        btnsix.classList.add('buttonCorrect');
-        showresult();
-        
-        
-    }
-    else{
-        btnsix.classList.add('buttonIncorrect');
-        
-        
-        ClearDesign();
-        losegame();
-       
-    }
-    
-pressed++;
-};
 
 
 function showresult(){
-    if ( pressed >= 5){
+    if ( pressed >= 3){
         for (let index = 0; index < playernumbers.length; index++) {
         if (numbers[index] != playernumbers[index])
             {
@@ -207,12 +166,6 @@ function ClearDesign(){
 
      btnfour.classList.remove('buttonCorrect');
      btnfour.classList.remove('buttonIncorrect');
-
-     btnfive.classList.remove('buttonCorrect');
-     btnfive.classList.remove('buttonIncorrect');
-
-     btnsix.classList.remove('buttonCorrect');
-     btnsix.classList.remove('buttonIncorrect');
      playernumbers = [];
      pressed = -1;  
 
@@ -240,8 +193,6 @@ function losegame(){
 };
 
 function wincalculator(){
-//let calculation = betvalue * winszorzo[nyeremenyszorzo];
-//balance = balance + calculation;
 balance = balance + (betvalue*winszorzo[nyeremenyszorzo]);
 balanceview.innerHTML = "Az egyenleged: "+ balance;
 
@@ -253,8 +204,6 @@ btnone.classList.add('disabled-button');
 btntwo.classList.add('disabled-button');
 btnthree.classList.add('disabled-button');
 btnfour.classList.add('disabled-button');
-btnfive.classList.add('disabled-button');
-btnsix.classList.add('disabled-button');
 }
 
 function enablebuttons(){
@@ -262,8 +211,6 @@ btnone.classList.remove('disabled-button');
 btntwo.classList.remove('disabled-button');
 btnthree.classList.remove('disabled-button');
 btnfour.classList.remove('disabled-button');
-btnfive.classList.remove('disabled-button');
-btnsix.classList.remove('disabled-button');    
 }
 
 function disableinput(){
@@ -279,7 +226,7 @@ function wingame(){
 }
 
 function generateNewCombination() {
-  const array = [1, 2, 3, 4, 5, 6];
+  const array = [1, 2, 3, 4];
 
   // kétszer shuffle-zünk hogy kellően átrendezze, lehet h. egy is elég lenne, de így biztosabb
   shuffleArray(array); 
