@@ -1,6 +1,15 @@
+
+
+import axios from 'https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm'
+
+
+document.getElementById("scboard").addEventListener("click",scorelist);
+
+
+
+
 let numbers = [];
-//let numbers2 = [];
-//numbers2.push(2, 6, 5, 4, 3, 1);
+
 
 let playernumbers = [];
 let pressed = 0;
@@ -10,6 +19,7 @@ let activetry = 3;
 let winszorzo = [1.5,2,3]
 let nyeremenyszorzo = 2;
 let rounds = 1;
+let uname = "";
 
 
 let balanceview = document.getElementById('balanceview');
@@ -40,6 +50,7 @@ betinput.addEventListener('keydown', function(event) {
     disableinput();
     numbers = generateNewCombination();
     console.log(numbers);
+    
     }
     else{
         alert("a megadott összeg nagyobb az egyenlegednél");
@@ -47,7 +58,10 @@ betinput.addEventListener('keydown', function(event) {
   }
 });
 
-
+btnone.addEventListener('click', pressbuttonOne );
+btntwo.addEventListener('click', pressbuttonTwo );
+btnthree.addEventListener('click', pressbuttonThree );
+btnfour.addEventListener('click', pressbuttonFour );
 function pressbuttonOne(){
 
 let press = 1;
@@ -148,6 +162,9 @@ function showresult(){
             enableinput();         
             wingame(); 
             endround();
+            
+            
+            
             }
         
     }
@@ -188,6 +205,7 @@ function losegame(){
     disablebuttons();
     enableinput();
     endround();
+    getscore();
     
  }
 };
@@ -250,5 +268,36 @@ function endround(){
         alert("5. kör vége a mókának shavale");
         disableinput();
         disablebuttons();
+        getscore();
+        
     }
+}
+
+async function getscore()
+{
+    const {data} = await axios.get("https://xrnmotmsvgqvjgwtuvmf.supabase.co/functions/v1/top-leaderboard");
+    const szam = data.top_players[4].score;
+    
+    if (szam < balance)
+    {
+        uname = prompt("Please enter your name");
+        postscore();
+    }
+    
+}
+
+async function postscore(){
+
+await axios.post("https://xrnmotmsvgqvjgwtuvmf.supabase.co/functions/v1/submit-leaderboard",
+{
+    name: uname,
+    score:balance
+});
+};
+
+async function scorelist()
+{
+    const {data} = await axios.get("https://xrnmotmsvgqvjgwtuvmf.supabase.co/functions/v1/top-leaderboard");
+    console.log(data);
+    
 }
