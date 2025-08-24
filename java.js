@@ -268,6 +268,7 @@ function endround(){
         alert("5. kör vége a mókának shavale");
         disableinput();
         disablebuttons();
+
         getscore();
         
     }
