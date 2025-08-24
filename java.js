@@ -205,7 +205,8 @@ function losegame(){
     disablebuttons();
     enableinput();
     endround();
-    getscore();
+
+    //getscore();
     
  }
 };
