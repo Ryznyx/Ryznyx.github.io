@@ -40,7 +40,7 @@ async function getinput(){
     let lat = visszakapottgeo[0].lat;
     let lon = visszakapottgeo[0].lon;
     elevate = elevate + lat+","+lon;
-    console.log(elevate);
+    console.log(elevate + " postaznivalo link before rekt");
     const visszakapottgeo2 = await postData();
     console.log(visszakapottgeo2+ " kaptukvissza");
 }
