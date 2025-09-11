@@ -34,7 +34,7 @@ async function getinput(){
     inputdata = inputfield.value;
     getloc = getloc + inputdata;
     getloc = getloc + "&format=json";
-    console.log(getloc);
+    console.log(getloc + " getloc, teljest first link");
     
     const visszakapottgeo = await getData();
     let lat = visszakapottgeo[0].lat;
