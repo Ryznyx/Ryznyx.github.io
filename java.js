@@ -12,7 +12,7 @@ let elevationdata = 0;
 async function getinput(){
     
     inputdata = inputfield.value;
-    inputdata = formatInput();
+    //inputdata = formatInput();
 
     getloc = getloc + inputdata;
     getloc = getloc + "&format=json";
