@@ -10,58 +10,59 @@ let volthiba = false;
 
 function buttonclick(){
 atvettword = document.getElementById('textbox').value;
-correction();
+var eredmeny = correction(szolista, atvettword);
+console.log(eredmeny);
+resetTodefault();
 }
 
-function correction(){
+function correction(szolista, atvettword){
     
     for (let index = 0; index < szolista.length; index++) {
-        let teszt = szolista[index];  // végigmegyünk a szolistán, szolista elsö eleme = teszt
+        let teszt = szolista[index];  
         elteres =0;
         if (teszt.length === atvettword.length)
         {
-            console.log(teszt.length+ "  teszt length és atvettword length " + atvettword.length )
-            for (let index = 0; index < atvettword.length; index++) {
-                const element = atvettword[index];
-                const element2 = teszt[index];
+            for (let indexx = 0; indexx < atvettword.length; indexx++) {
+                const element = atvettword[indexx];
+                const element2 = teszt[indexx];
                 if(element != element2)
                 {
-                    console.log("Az "+ index+ "betü eltér "+ element +" vs "+ element2 + " atvett vs szolista")
                     elteres++;
                     volthiba = true;
-                }
-                
+                }      
             }
         helyesszo.push({hiba:elteres,szó: teszt});
-        console.log(helyesszo);
-        }
-        
-    }
+        }       
+    };
 
-    
-    for (let index = 0; index < helyesszo.length; index++) {
-        let element = helyesszo[index].hiba; 
-        if (element <= asd)
-        {
-            asd = index;
-        }
-        else
-        {
-            asd=0;
-        }
-        
-    }
     if (volthiba === true)
     {
-        console.log("A javasolt helyes szó: "+helyesszo[asd].szó);
-
+        for (let kek = 0; kek < helyesszo.length; kek++) {
+        let element = helyesszo[kek].hiba; 
+        if (element < asd || element === asd)
+        {
+            asd = kek;
+        }
+        else
+        {   
+            asd=1;   
+        }
+        
+    };
+       return helyesszo[asd].szó; 
     }
     else{
-        console.log("Nincs javaslat");
+        return null;
     }
-}
+};
 
-
+function resetTodefault()
+{
+    atvettword = "";
+    helyesszo = [];
+    asd = 1;
+    volthiba = false;
+};
 
 
 
