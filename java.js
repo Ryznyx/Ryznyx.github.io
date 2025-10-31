@@ -4,7 +4,7 @@ szolista.push("alma","kecske","komornyik","sárkány", "akar");
 console.log(szolista);
 let elteres = 0;
 let helyesszo = [];
-let asd = 1;
+let asd = 0;
 let volthiba = false;
 
 
@@ -32,20 +32,20 @@ function correction(szolista, atvettword){
                 }      
             }
         helyesszo.push({hiba:elteres,szó: teszt});
+        
         }       
     };
 
     if (volthiba === true)
     {
+        console.log(helyesszo);
         for (let kek = 0; kek < helyesszo.length; kek++) {
         let element = helyesszo[kek].hiba; 
-        if (element < asd || element === asd)
+        console.log(element+ " currently az element");
+        if (element <= asd)
         {
             asd = kek;
-        }
-        else
-        {   
-            asd=1;   
+            console.log("asd = kek");
         }
         
     };
