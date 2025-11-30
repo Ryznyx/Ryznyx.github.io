@@ -9,20 +9,30 @@
 </head>
 <body>
     
- <div id="A">
-<div >
-    <button id="kerdes1"class="gombclass" onclick="firstquestion()">1. Kérdés</button>
-    <p></p>
-    <button id="kerdes2"class="gombclass" disabled onclick="secondquestion()">2. Kérdés</button>
-    <p></p>
-</div>
+<div id="A">
+    <div >
+<button id="kerdes1"class="gombclass" onclick="AskQuestion()">1. Kérdés</button>
+<p></p>
+<button id="kerdes2"class="gombclass" disabled onclick="AskQuestion()">2. Kérdés</button>
+<p></p>
+    </div>
  </div>
+
  <div id ="B">
-    <div>
-        <h1>Kérdés</h1>
+    <div id="questiontext">
+        
     </div>
 
- </div>   
+    <div id="BQuestions">
+        <button id="v1" class="valaszgomb" onclick="checkanswer(event)">Valasz1</button>  
+        <button id="v2" class="valaszgomb" onclick="checkanswer(event)">Valasz2</button> 
+        <button id="v3" class="valaszgomb" onclick="checkanswer(event)">Valasz3</button> 
+    </div>
+
+ </div>
+
+
+
  <script src="java.js"></script>  
 </body>
 </html>
