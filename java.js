@@ -1,60 +1,113 @@
-let firstbutton = document.getElementById('kerdes1');
-let secondbutton = document.getElementById('kerdes2');
+import axios from 'https://cdn.jsdelivr.net/npm/axios@1.13.2/+esm'
 
-let currentquestion = 0;
+document.getElementById('btn').addEventListener('click', senddata);
 
-let kerdesek = document.getElementById('B');
-let questions = [];
-let currentcorrectanswer ="";
-let gombok = document.getElementsByClassName('valaszgomb');
-for (const el of gombok) el.classList.add('eltuntetes');
-questions.push(
+let citylist = [];
+citylist.push({name: "Budapest", lat: 47.4979, long: 19.0402 });
+citylist.push({name: "New York", lat: 40.7128, long: -74.0060 });
+citylist.push({name: "London", lat: 51.5074, long: -0.1278 });
+citylist.push({name: "Kathmandu", lat: 27.7172, long: 85.3240 });
+CreateOptions(); 
+
+
+
+function CreateOptions(){
+
+const select = document.getElementById('number-select'); 
+    for (let i = 1; i <= 16; i++) 
     {
-        title: "Ki a sárkány?",
-        answers:["Péter", "Offici","senki"],
-        correctanswer: "Péter",
-        buttonToEnable: "kerdes2",
-        buttonToDisable:"kerdes1"
-
+        let opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        select.appendChild(opt);  
     }
-);
-questions.push(
-    {
-        title: "Hány fasz járt ma az offici anyjában?",
-        answers:["0", "2","az int nem tárol ilyen nagy értéket"],
-        correctanswer: "az int nem tárol ilyen nagy értéket",
-        buttonToEnable: "kerdes3",
-        buttonToDisable:"kerdes2"
 
+const citylista = document.getElementById('location-select');
+    for (let index = 0; index < citylist.length; index++) {
+        let valaszopcio = document.createElement('option');
+        valaszopcio.value = citylist[index].name;
+        valaszopcio.innerHTML = citylist[index].name;
+        citylista.appendChild(valaszopcio);
     }
-);
-
-function AskQuestion(){
-    for (const el of gombok) el.classList.remove('eltuntetes');
-    document.getElementById('questiontext').textContent = questions[currentquestion].title;
-    document.getElementById('v1').textContent = questions[currentquestion].answers[0];
-    document.getElementById('v2').textContent = questions[currentquestion].answers[1];
-    document.getElementById('v3').textContent = questions[currentquestion].answers[2]; 
-    
 }
 
-function checkanswer(e){
-    const t = e.target.textContent;
-    
-    if (t === questions[currentquestion].correctanswer)
+
+async function senddata(){
+
+    let menustatus = checked();
+
+    if (menustatus === true)
     {
-        alert("jovalasz");
-        const idtoenable = questions[currentquestion].buttonToEnable;
-        const idtodisable = questions[currentquestion].buttonToDisable
-        document.getElementById(idtoenable).disabled = false;
-        document.getElementById(idtodisable).disabled = true;
-        for (const el of gombok) el.classList.add('eltuntetes');
-        questiontext.textContent = "";
-        currentquestion++;
-    }
-    else{
-        alert("wrong")
-    }
+
+    let mintemptext = mintemp();
+    let maxtemptext = maxtemp();
+
+    let szamvalue = document.getElementById('number-select').value;
+    let locationvalue = document.getElementById('location-select').value;
+    let templat = "";
+    let templong = "";
+    for (let index = 0; index < citylist.length; index++) {
+        if (locationvalue === citylist[index].name)
+        {
+            templat = citylist[index].lat;
+            templong = citylist[index].long;
+        }
         
+    }
+    // let urldata = `https://api.open-meteo.com/v1/forecast?latitude=${templat}&longitude=${templong}&daily=temperature_2m_max,rain_sum&forecast_days=${szamvalue}`;
+    let urldata = `https://api.open-meteo.com/v1/forecast?latitude=${templat}&longitude=${templong}&rain_sum${mintemptext}${maxtemptext}&forecast_days=${szamvalue}`;
+    console.log(urldata);
+    let reply = await SendUrl(urldata);
+    console.log(reply.data);
+    }
+    else
+    {
+        alert("valassz ki egy opciot a checkboxban");
+    }
 }
 
+
+async function SendUrl(url){
+    const data = await axios.get(url);
+    return data;
+}
+
+function checked(){
+    let option1 = document.getElementById('check1').checked;
+    let option2 = document.getElementById('check2').checked;
+    if (option1 === true || option2 === true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function mintemp()
+{
+    let option1 = document.getElementById('check1').checked;
+    
+    if (option1 === true)
+    {
+        return ",temperature_2m_min";
+    }
+    else
+    {
+        return "";
+    }
+
+}
+function maxtemp(){
+let option2 = document.getElementById('check2').checked;
+     if (option2 === true)
+    {   
+        return ",temperature_2m_max";
+    }
+    else
+    {
+        return "";
+    }
+}
+//temperature_2m_min,temperature_2m_max
